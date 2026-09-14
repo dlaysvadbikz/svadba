@@ -1,0 +1,167 @@
+// =========================
+// ИЗМЕНИТЬ ДАТУ СВАДЬБЫ ЗДЕСЬ
+// =========================
+const weddingDate = new Date('2026-11-14T18:30:00+03:00');
+
+const envelope = document.getElementById('envelope');
+const body = document.body;
+const wishInput = document.getElementById('wishInput');
+const addWishButton = document.getElementById('addWish');
+const wishList = document.getElementById('wishList');
+const langButtons = document.querySelectorAll('.lang-btn');
+
+const translations = {
+  ru: {
+    invited: 'Вы приглашены',
+    names: 'Ваше имя <span>&</span> Имя партнёра',
+    date: '14 ноября 2026',
+    location: 'GAZALKENT RESTORAN, GAZALKENT',
+    countdownTitle: 'До нашей свадьбы',
+    days: 'Дней',
+    hours: 'Часов',
+    minutes: 'Минут',
+    seconds: 'Секунд',
+    locationLabel: 'Локация',
+    locationTitle: 'Место встречи',
+    addressLine1: 'г. Газалкент, 25',
+    addressLine2: 'Газалкент',
+    googleMaps: 'Google Maps',
+    yandexMaps: 'Яндекс Карты',
+    galleryLabel: 'Галерея',
+    galleryTitle: 'Наши моменты',
+    wishesLabel: 'Пожелания',
+    wishesTitle: 'Книга гостей',
+    addWish: 'Добавить пожелание',
+    wish1: 'Спасибо, что разделяете с нами этот счастливый день.',
+    wish2: 'Пусть ваша любовь будет такой же светлой и крепкой.',
+    wish3: 'Желаем вам бесконечных прекрасных моментов.',
+    textarea: 'Напишите тёплые слова...'
+  },
+  uz: {
+    invited: 'Siz taklif etilasiz',
+    names: 'Sizning ismingiz <span>&</span> Hamkoringiz',
+    date: '14-noyabr 2026',
+    location: 'GAZALKENT RESTORAN, GAZALKENT',
+    countdownTitle: 'To’yimizgacha',
+    days: 'Kun',
+    hours: 'Soat',
+    minutes: 'Daqiqa',
+    seconds: 'Sekund',
+    locationLabel: 'Manzil',
+    locationTitle: 'Uchrashuv joyi',
+    addressLine1: 'Gazalkent shahridagi 25-uy',
+    addressLine2: 'Gazalkent',
+    googleMaps: 'Google Maps',
+    yandexMaps: 'Yandex Xaritalar',
+    galleryLabel: 'Galereya',
+    galleryTitle: 'Bizning lahzalarimiz',
+    wishesLabel: 'Tilaklar',
+    wishesTitle: 'Mehmonlar kitobi',
+    addWish: 'Tilak qo‘shish',
+    wish1: 'Bu baxtli kunda biz bilan birga bo‘lishingiz uchun rahmat.',
+    wish2: 'Sizning sevginingiz ham shunchalik yorqin va kuchli bo‘lsin.',
+    wish3: 'Sizga cheksiz go‘zal daqiqalar tilaymiz.',
+    textarea: 'Iltimos, iliq so‘zlar yozing...'
+  },
+  kz: {
+    invited: 'Сіздерді шақырамыз',
+    names: 'Сіздің есіміңіз <span>&</span> Жұбайыңыз',
+    date: '14 қараша 2026',
+    location: 'GAZALKENT RESTORAN, GAZALKENT',
+    countdownTitle: 'Біздің үйленуімізге дейін',
+    days: 'Күн',
+    hours: 'Сағат',
+    minutes: 'Минут',
+    seconds: 'Секунд',
+    locationLabel: 'Орналасқан жер',
+    locationTitle: 'Кездесу орны',
+    addressLine1: 'Газалкент қаласы, 25',
+    addressLine2: 'Газалкент',
+    googleMaps: 'Google Maps',
+    yandexMaps: 'Яндекс Карталар',
+    galleryLabel: 'Галерея',
+    galleryTitle: 'Біздің сәттеріміз',
+    wishesLabel: 'Тілек',
+    wishesTitle: 'Қонақтар кітабы',
+    addWish: 'Тілек қосу',
+    wish1: 'Бұл бақытты күнде бізбен бірге болғаныңыз үшін рахмет.',
+    wish2: 'Сіздің махаббаттарыңыз да осындай жарық пен күшті болсын.',
+    wish3: 'Сізге шексіз әдемі сәттер тілейміз.',
+    textarea: 'Ыстық сөздер жазып қойыңыз...'
+  }
+};
+
+const setLanguage = (lang) => {
+  const data = translations[lang] || translations.ru;
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach((element) => {
+    const key = element.dataset.i18n;
+    if (key && data[key]) {
+      element.innerHTML = data[key];
+    }
+  });
+
+  if (wishInput) {
+    wishInput.placeholder = data.textarea;
+  }
+
+  langButtons.forEach((button) => {
+    const isActive = button.dataset.lang === lang;
+    button.classList.toggle('active', isActive);
+  });
+};
+
+langButtons.forEach((button) => {
+  button.addEventListener('click', () => setLanguage(button.dataset.lang));
+});
+
+setLanguage('ru');
+
+const updateCountdown = () => {
+  const now = new Date();
+  const distance = weddingDate - now;
+
+  if (distance <= 0) {
+    document.getElementById('days').textContent = '00';
+    document.getElementById('hours').textContent = '00';
+    document.getElementById('minutes').textContent = '00';
+    document.getElementById('seconds').textContent = '00';
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
+
+  document.getElementById('days').textContent = String(days).padStart(2, '0');
+  document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+};
+
+if (envelope) {
+  envelope.addEventListener('click', () => {
+    body.classList.add('open');
+    envelope.setAttribute('aria-label', 'Приглашение открыто');
+  });
+}
+
+// =========================
+// КНИГА ЖЕЛАНИЙ: ТУТ ДОБАВЛЯЮТСЯ НОВЫЕ ПОЖЕЛАНИЯ
+// =========================
+if (addWishButton && wishInput && wishList) {
+  addWishButton.addEventListener('click', () => {
+    const value = wishInput.value.trim();
+    if (!value) return;
+
+    const item = document.createElement('li');
+    item.textContent = value;
+    wishList.prepend(item);
+    wishInput.value = '';
+  });
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);

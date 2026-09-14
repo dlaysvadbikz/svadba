@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Биылғы жылдың ең қуанышты күні – біздің үйлену тойымыздың куәсі болуға шақырамыз" />
+  <title>Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="page">
+    <div class="language-switcher" aria-label="Выбор языка">
+      <button class="lang-btn active" data-lang="ru" type="button">RU</button>
+      <button class="lang-btn" data-lang="uz" type="button">UZ</button>
+      <button class="lang-btn" data-lang="kz" type="button">KZ</button>
+    </div>
+
+    <div class="envelope-stage" id="envelopeStage">
+      <button class="envelope" id="envelope" type="button" aria-label="Открыть приглашение">
+        <span class="seal" aria-hidden="true">
+          <span class="seal-inner">❤</span>
+        </span>
+        <span class="envelope-shadow"></span>
+        <span class="envelope-back"></span>
+        <span class="envelope-flap"></span>
+        <span class="letter">
+          <span class="letter-inner"></span>
+        </span>
+        <span class="envelope-front"></span>
+      </button>
+    </div>
+
+    <section class="invitation" id="invitation" aria-live="polite">
+      <!-- =========================
+             ИЗМЕНИТЬ ИМЕНА, ДАТУ И МЕСТО
+             ========================= -->
+      <header class="hero">
+        <p class="eyebrow" data-i18n="invited">Сіздерді шақырамыз</p>
+        <h1 data-i18n="names">????? <span>&</span> ?????</h1>
+        <p class="date" data-i18n="date">10 ноября 2026</p>
+        <p class="location" data-i18n="location">GAZALKENT RESTORAN</p>
+      </header>
+
+      <section class="countdown" aria-labelledby="countdown-title">
+        <h2 id="countdown-title" data-i18n="countdownTitle">До нашей свадьбы</h2>
+        <div class="countdown-grid">
+          <div class="time-box">
+            <span id="days">00</span>
+            <small data-i18n="days">Дней</small>
+          </div>
+          <div class="time-box">
+            <span id="hours">00</span>
+            <small data-i18n="hours">Часов</small>
+          </div>
+          <div class="time-box">
+            <span id="minutes">00</span>
+            <small data-i18n="minutes">Минут</small>
+          </div>
+          <div class="time-box">
+            <span id="seconds">00</span>
+            <small data-i18n="seconds">Секунд</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+             ИЗМЕНИТЬ ЛОКАЦИЮ И ССЫЛКИ КАРТ
+             ========================= -->
+      <section class="location-block" aria-labelledby="location-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="locationLabel">Локация</p>
+          <h2 id="location-title" data-i18n="locationTitle">Место встречи</h2>
+        </div>
+        <div class="location-card">
+          <div>
+            <h3>GAZALKENT RESTORAN</h3>
+            <p data-i18n="addressLine1">GAZALKENT, 25</p>
+            <p data-i18n="addressLine2">GAZALKENT</p>
+          </div>
+          <div class="map-actions">
+            <a href="https://maps.google.com/?q=GAZALKENT+RESTAURANT+GAZALKENT" target="_blank" rel="noreferrer"
+              data-i18n="googleMaps">Google Maps</a>
+            <a href="https://yandex.ru/maps/?text=GAZALKENT+RESTAURANT+GAZALKENT" target="_blank" rel="noreferrer"
+              data-i18n="yandexMaps">Яндекс Карты</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+             МЕСТО ДЛЯ ФОТОГРАФИЙ: 4 КАРТИНКИ
+             ЗАМЕНИТЬ src на свои изображения
+             ========================= -->
+      <section class="gallery" aria-labelledby="gallery-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="galleryLabel">Галерея</p>
+          <h2 id="gallery-title" data-i18n="galleryTitle">Наши моменты</h2>
+        </div>
+        <div class="gallery-grid">
+          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80"
+            alt="Пара на прогулке" />
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80"
+            alt="Пара улыбается" />
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80"
+            alt="Романтическая прогулка" />
+          <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=900&q=80"
+            alt="Вечерний портрет" />
+        </div>
+      </section>
+
+      <!-- =========================
+             ПОЛЕ ДЛЯ ПОЖЕЛАНИЙ И ПРИМЕРЫ ТЕКСТА
+             ЗДЕСЬ МОЖНО ЗАМЕНИТЬ СТРОКИ ПОД СЕБЯ
+             ========================= -->
+      <section class="wishes" aria-labelledby="wishes-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="wishesLabel">Пожелания</p>
+          <h2 id="wishes-title" data-i18n="wishesTitle">Книга гостей</h2>
+        </div>
+
+        <textarea id="wishInput" data-placeholder-ru="Напишите тёплые слова..."
+          data-placeholder-uz="Iltimos, iliq so'zlar yozing..." data-placeholder-kz="Ыстық сөздер жазып қойыңыз..."
+          rows="4"></textarea>
+        <button type="button" class="wish-button" id="addWish" data-i18n="addWish">Добавить пожелание</button>
+
+        <ul class="wish-list" id="wishList">
+          <li data-i18n="wish1">Спасибо, что разделяете с нами этот счастливый день.</li>
+          <li data-i18n="wish2">Пусть ваша любовь будет такой же светлой и крепкой.</li>
+          <li data-i18n="wish3">Желаем вам бесконечных прекрасных моментов</li>
+        </ul>
+      </section>
+
+      <a class="instagram-promo" href="https://instagram.com/yourprofile" target="_blank" rel="noreferrer"
+        aria-label="Instagram">
+        <svg class="promo-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="igStroke" x1="0%" x2="100%" y1="0%" y2="100%">
+              <stop offset="0%" stop-color="#f58529" />
+              <stop offset="40%" stop-color="#dd2a7b" />
+              <stop offset="75%" stop-color="#8134af" />
+              <stop offset="100%" stop-color="#515bd4" />
+            </linearGradient>
+            <linearGradient id="igDot" x1="0%" x2="100%" y1="0%" y2="100%">
+              <stop offset="0%" stop-color="#f58529" />
+              <stop offset="40%" stop-color="#dd2a7b" />
+              <stop offset="75%" stop-color="#8134af" />
+              <stop offset="100%" stop-color="#515bd4" />
+            </linearGradient>
+          </defs>
+          <rect x="12" y="12" width="40" height="40" rx="10" fill="none" stroke="url(#igStroke)"
+            stroke-width="3" />
+          <circle cx="32" cy="32" r="8" fill="none" stroke="url(#igStroke)" stroke-width="3" />
+          <circle cx="45.5" cy="18.5" r="3" fill="url(#igDot)" />
+        </svg>
+      </a>
+    </section>
+
+  </main>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script src="script.js"></script>
+  <script>
+    // =========================
+    // EmailJS: ИНИЦИАЛИЗАЦИЯ
+    // Подставь свой public key здесь
+    // =========================
+    (function () {
+      emailjs.init({
+        publicKey: 'YOUR_PUBLIC_KEY'
+      });
+    })();
+  </script>
+</body>
+
+</html>
