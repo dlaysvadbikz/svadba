@@ -41,8 +41,8 @@ const translations = {
     attendYes: 'Да, обязательно приду',
     attendNo: 'К сожалению, не смогу',
     surveySubmit: 'Ответить',
-    surveyThanksYes: 'Спасибо! Мы будем ждать вас.',
-    surveyThanksNo: 'Спасибо за ответ. Очень жаль, что не сможете прийти.'
+    surveyThanksYes: 'Спасибо.',
+    surveyThanksNo: 'Спасибо.'
   },
   uz: {
     invited: 'Siz taklif etilasiz',
@@ -73,7 +73,9 @@ const translations = {
     surveyTitle: 'Siz kelasizmi?',
     attendYes: 'Ha, albatta kelaman',
     attendNo: 'Afsuski, kela olmayman',
-    surveySubmit: 'Javob berish'
+    surveySubmit: 'Javob berish',
+    surveyThanksYes: 'Rahmat.',
+    surveyThanksNo: 'Rahmat.'
   },
   kz: {
     invited: 'Сіздерді шақырамыз',
@@ -105,8 +107,8 @@ const translations = {
     attendYes: 'Иә, міндетті түрде келемін',
     attendNo: 'Кешіріңіз, келмеймін',
     surveySubmit: 'Жауап беру',
-    surveyThanksYes: 'Рахмет! Біз сізді күтеміз.',
-    surveyThanksNo: 'Жауап үшін рахмет. Кешіріңіз, келмейсіз.'
+    surveyThanksYes: 'Рахмет.',
+    surveyThanksNo: 'Рахмет.'
   }
 };
 

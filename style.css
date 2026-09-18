@@ -553,6 +553,7 @@ textarea {
 
 .survey-box {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 12px;
   margin-top: 8px;
 }
@@ -560,12 +561,14 @@ textarea {
 .survey-option {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 10px;
   padding: 12px 14px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid var(--line);
   color: var(--ink);
+  text-align: left;
 }
 
 .survey-option input {
@@ -616,6 +619,17 @@ textarea {
 
 .promo-icon circle:last-of-type {
   fill: url(#igDot);
+}
+
+@media (min-width: 520px) {
+  .survey-box {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .survey-option {
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 @media (min-width: 760px) {
