@@ -186,8 +186,10 @@ if (addWishButton && wishInput && wishList) {
 
 const surveySubmitButton = document.getElementById('submitSurvey');
 const surveyMessage = document.getElementById('surveyMessage');
+const surveyBox = document.getElementById('surveyBox');
+const surveySection = document.getElementById('surveySection');
 
-if (surveySubmitButton && surveyMessage) {
+if (surveySubmitButton && surveyMessage && surveyBox && surveySection) {
   surveySubmitButton.addEventListener('click', () => {
     const selected = document.querySelector('input[name="attendance"]:checked');
     if (!selected) return;
@@ -195,8 +197,34 @@ if (surveySubmitButton && surveyMessage) {
     const isComing = selected.value === 'yes';
     const lang = document.documentElement.lang || 'kz';
     const data = translations[lang] || translations.kz;
-    surveyMessage.textContent = isComing ? data.surveyThanksYes : data.surveyThanksNo;
+
+    surveySection.classList.add('survey-sent');
+    surveyBox.hidden = true;
+    surveySubmitButton.hidden = true;
+
+    const messageText = isComing ? data.surveyThanksYes : data.surveyThanksNo;
+    surveyMessage.innerHTML = '';
+
+    const plane = document.createElement('span');
+    plane.className = 'flight-plane';
+    plane.textContent = '✈';
+    plane.setAttribute('aria-hidden', 'true');
+    surveyMessage.appendChild(plane);
+
+    const text = document.createElement('span');
+    text.className = 'confirmation-text';
+    text.textContent = messageText;
+    surveyMessage.appendChild(text);
+
     surveyMessage.hidden = false;
+    surveyMessage.classList.remove('plane-animating');
+    void surveyMessage.offsetWidth;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        surveyMessage.classList.add('plane-animating');
+      });
+    });
+    surveyMessage.classList.remove('survey-message--hidden');
   });
 }
 
