@@ -584,6 +584,16 @@ textarea {
   pointer-events: none;
 }
 
+.survey-sent .survey-box {
+  display: grid;
+  opacity: 1;
+  transform: none;
+}
+
+.survey-sent .survey-option {
+  display: flex;
+}
+
 .confirmation {
   margin-top: 12px;
   padding: 12px 16px;
@@ -653,6 +663,45 @@ textarea {
   100% {
     opacity: 0;
     transform: translate(440px, -96px) rotate(2deg) scale(1.7);
+  }
+}
+
+@media (max-width: 480px) {
+  .confirmation {
+    overflow: hidden;
+    min-height: 56px;
+  }
+
+  .confirmation .flight-plane {
+    left: -10px;
+    bottom: -14px;
+    font-size: clamp(4rem, 20vw, 6rem);
+  }
+
+  .confirmation.plane-animating .flight-plane {
+    animation: planeFlightMobile 2.4s cubic-bezier(0.18, 0.8, 0.24, 1) 0s forwards;
+  }
+}
+
+@keyframes planeFlightMobile {
+  0% {
+    opacity: 0;
+    transform: translate(-8px, 10px) rotate(18deg) scale(0.7);
+  }
+  15% {
+    opacity: 0.4;
+  }
+  38% {
+    opacity: 0.8;
+    transform: translate(34px, -6px) rotate(12deg) scale(1.0);
+  }
+  68% {
+    opacity: 0.68;
+    transform: translate(90px, -18px) rotate(8deg) scale(1.12);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(150px, -38px) rotate(3deg) scale(1.22);
   }
 }
 

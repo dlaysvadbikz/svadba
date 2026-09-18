@@ -199,8 +199,23 @@ if (surveySubmitButton && surveyMessage && surveyBox && surveySection) {
     const data = translations[lang] || translations.kz;
 
     surveySection.classList.add('survey-sent');
-    surveyBox.hidden = true;
+    surveyBox.hidden = false;
+    surveyBox.style.display = 'grid';
     surveySubmitButton.hidden = true;
+    surveySubmitButton.style.display = 'none';
+
+    const chosenOption = Array.from(document.querySelectorAll('.survey-option')).find((option) => {
+      const radio = option.querySelector('input');
+      return radio && radio.checked;
+    });
+
+    document.querySelectorAll('.survey-option').forEach((option) => {
+      const keepVisible = option === chosenOption;
+      option.hidden = !keepVisible;
+      option.style.display = keepVisible ? 'flex' : 'none';
+      option.style.opacity = keepVisible ? '1' : '0';
+      option.style.pointerEvents = 'none';
+    });
 
     const messageText = isComing ? data.surveyThanksYes : data.surveyThanksNo;
     surveyMessage.innerHTML = '';
