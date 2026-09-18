@@ -9,6 +9,7 @@ const wishInput = document.getElementById('wishInput');
 const addWishButton = document.getElementById('addWish');
 const wishList = document.getElementById('wishList');
 const langButtons = document.querySelectorAll('.lang-btn');
+const backgroundMusic = document.getElementById('backgroundMusic');
 
 const translations = {
   ru: {
@@ -166,6 +167,10 @@ if (envelope) {
   envelope.addEventListener('click', () => {
     body.classList.add('open');
     envelope.setAttribute('aria-label', 'Приглашение открыто');
+
+    if (backgroundMusic) {
+      backgroundMusic.play().catch(() => {});
+    }
   });
 }
 
