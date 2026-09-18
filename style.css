@@ -287,7 +287,8 @@ body.open .invitation {
 .location-block,
 .gallery,
 .rsvp,
-.wishes {
+.wishes,
+.survey {
   width: min(100%, 700px);
   margin: 0 auto 22px;
   background: rgba(255, 255, 255, 0.42);
@@ -332,12 +333,20 @@ h3 {
 }
 
 .hero .date,
+.hero .time,
 .hero .location {
   margin: 10px 0 0;
   font-size: 0.9rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.hero .time {
+  display: block;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.18em;
 }
 
 .countdown h2,
@@ -349,7 +358,7 @@ h3 {
 
 .countdown-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -411,16 +420,19 @@ h3 {
   text-align: center;
   text-decoration: none;
   color: var(--ink);
-  background: linear-gradient(180deg, #f9f4ee 0%, #f0e5d6 100%);
-  border: 1px solid rgba(88, 63, 55, 0.1);
+  background: linear-gradient(180deg, #fffdfb 0%, #f2e1cf 100%);
+  border: 1px solid rgba(126, 93, 72, 0.14);
   border-radius: 999px;
   padding: 12px 16px;
-  font-weight: 600;
-  transition: transform 0.2s ease;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 10px 18px rgba(155, 120, 93, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .map-actions a:hover {
   transform: translateY(-2px);
+  box-shadow: 0 14px 20px rgba(155, 120, 93, 0.16);
 }
 
 .gallery-grid {
@@ -537,6 +549,27 @@ textarea {
   left: 10px;
   top: 11px;
   color: var(--gold);
+}
+
+.survey-box {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.survey-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.survey-option input {
+  accent-color: var(--gold);
 }
 
 .confirmation {

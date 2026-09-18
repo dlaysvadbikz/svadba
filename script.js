@@ -35,7 +35,14 @@ const translations = {
     wish1: 'Спасибо, что разделяете с нами этот счастливый день.',
     wish2: 'Пусть ваша любовь будет такой же светлой и крепкой.',
     wish3: 'Желаем вам бесконечных прекрасных моментов.',
-    textarea: 'Напишите тёплые слова...'
+    textarea: 'Напишите тёплые слова...',
+    surveyLabel: 'Опрос',
+    surveyTitle: 'Вы придёте?',
+    attendYes: 'Да, обязательно приду',
+    attendNo: 'К сожалению, не смогу',
+    surveySubmit: 'Ответить',
+    surveyThanksYes: 'Спасибо! Мы будем ждать вас.',
+    surveyThanksNo: 'Спасибо за ответ. Очень жаль, что не сможете прийти.'
   },
   uz: {
     invited: 'Siz taklif etilasiz',
@@ -61,7 +68,12 @@ const translations = {
     wish1: 'Bu baxtli kunda biz bilan birga bo‘lishingiz uchun rahmat.',
     wish2: 'Sizning sevginingiz ham shunchalik yorqin va kuchli bo‘lsin.',
     wish3: 'Sizga cheksiz go‘zal daqiqalar tilaymiz.',
-    textarea: 'Iltimos, iliq so‘zlar yozing...'
+    textarea: 'Iltimos, iliq so‘zlar yozing...',
+    surveyLabel: 'So‘rov',
+    surveyTitle: 'Siz kelasizmi?',
+    attendYes: 'Ha, albatta kelaman',
+    attendNo: 'Afsuski, kela olmayman',
+    surveySubmit: 'Javob berish'
   },
   kz: {
     invited: 'Сіздерді шақырамыз',
@@ -87,7 +99,14 @@ const translations = {
     wish1: 'Бұл бақытты күнде бізбен бірге болғаныңыз үшін рахмет.',
     wish2: 'Сіздің махаббаттарыңыз да осындай жарық пен күшті болсын.',
     wish3: 'Сізге шексіз әдемі сәттер тілейміз.',
-    textarea: 'Ыстық сөздер жазып қойыңыз...'
+    textarea: 'Ыстық сөздер жазып қойыңыз...',
+    surveyLabel: 'Сауалнама',
+    surveyTitle: 'Сіз келесіз бе?',
+    attendYes: 'Иә, міндетті түрде келемін',
+    attendNo: 'Кешіріңіз, келмеймін',
+    surveySubmit: 'Жауап беру',
+    surveyThanksYes: 'Рахмет! Біз сізді күтеміз.',
+    surveyThanksNo: 'Жауап үшін рахмет. Кешіріңіз, келмейсіз.'
   }
 };
 
@@ -116,7 +135,7 @@ langButtons.forEach((button) => {
   button.addEventListener('click', () => setLanguage(button.dataset.lang));
 });
 
-setLanguage('ru');
+setLanguage('kz');
 
 const updateCountdown = () => {
   const now = new Date();
@@ -160,6 +179,22 @@ if (addWishButton && wishInput && wishList) {
     item.textContent = value;
     wishList.prepend(item);
     wishInput.value = '';
+  });
+}
+
+const surveySubmitButton = document.getElementById('submitSurvey');
+const surveyMessage = document.getElementById('surveyMessage');
+
+if (surveySubmitButton && surveyMessage) {
+  surveySubmitButton.addEventListener('click', () => {
+    const selected = document.querySelector('input[name="attendance"]:checked');
+    if (!selected) return;
+
+    const isComing = selected.value === 'yes';
+    const lang = document.documentElement.lang || 'kz';
+    const data = translations[lang] || translations.kz;
+    surveyMessage.textContent = isComing ? data.surveyThanksYes : data.surveyThanksNo;
+    surveyMessage.hidden = false;
   });
 }
 
